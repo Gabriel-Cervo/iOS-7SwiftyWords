@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         answersLabel.textAlignment = .right
         view.addSubview(answersLabel)
         
-        // Define what views should take the most space when hugging
+        // Define what views should take the most space when stretching
         cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         
@@ -111,6 +111,29 @@ class ViewController: UIViewController {
             buttonsView.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 20),
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
+        
+        // width e height dos botoes
+        let width = 150
+        let height = 180
+        
+        // create 20 buttons in a 4x5 grid
+        for row in 0..<4 {
+            for col in 0..<5 {
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                letterButton.setTitle("WWW", for: .normal)
+                
+                // calculate the frame of this button using its column and row
+                // CGRect -> Core Graphics, draw things on screen
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+                
+                buttonsView.addSubview(letterButton)
+                
+                // add to the array so we can modify later on
+                letterButtons.append(letterButton)
+            }
+        }
         
         // testing
         cluesLabel.backgroundColor = .red
