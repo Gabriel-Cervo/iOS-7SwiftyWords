@@ -38,6 +38,25 @@ class ViewController: UIViewController {
         answersLabel.numberOfLines = 0
         answersLabel.textAlignment = .right
         view.addSubview(answersLabel)
+        
+        currentAnswer = UITextField()
+        currentAnswer.translatesAutoresizingMaskIntoConstraints = false
+        currentAnswer.placeholder = "Tap letters to guess"
+        currentAnswer.textAlignment = .center
+        currentAnswer.font = UIFont.systemFont(ofSize: 44)
+        currentAnswer.isUserInteractionEnabled = false
+        view.addSubview(currentAnswer)
+        
+        let submitButton = UIButton(type: .system) // type default
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.setTitle("SUBMIT", for: .normal)
+        view.addSubview(submitButton)
+        
+        let clearButton = UIButton(type: .system)
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
+        clearButton.setTitle("CLEAR", for: .normal)
+        view.addSubview(clearButton)
+        
                 
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -63,12 +82,28 @@ class ViewController: UIViewController {
 
             // make the answers label match the height of the clues label
             answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor),
+            
+            // Where is the horizontal center of this view
+            currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20),
+            
+            submitButton.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
+            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
+            submitButton.heightAnchor.constraint(equalToConstant: 60),
+
+            clearButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
+            clearButton.centerYAnchor.constraint(equalTo: submitButton.centerYAnchor),
+            clearButton.heightAnchor.constraint(equalToConstant: 60),
         ])
+        
+        cluesLabel.backgroundColor = .red
+        answersLabel.backgroundColor = .blue
+        currentAnswer.backgroundColor = .green
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
 
