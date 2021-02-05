@@ -39,6 +39,10 @@ class ViewController: UIViewController {
         answersLabel.textAlignment = .right
         view.addSubview(answersLabel)
         
+        // Define what views should take the most space when hugging
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        
         currentAnswer = UITextField()
         currentAnswer.translatesAutoresizingMaskIntoConstraints = false
         currentAnswer.placeholder = "Tap letters to guess"
@@ -56,6 +60,10 @@ class ViewController: UIViewController {
         clearButton.translatesAutoresizingMaskIntoConstraints = false
         clearButton.setTitle("CLEAR", for: .normal)
         view.addSubview(clearButton)
+        
+        let buttonsView = UIView() // div
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonsView)
         
                 
         NSLayoutConstraint.activate([
@@ -95,11 +103,20 @@ class ViewController: UIViewController {
             clearButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             clearButton.centerYAnchor.constraint(equalTo: submitButton.centerYAnchor),
             clearButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            // To use a constant, need to equalToCONSTANT
+            buttonsView.widthAnchor.constraint(equalToConstant: 750),
+            buttonsView.heightAnchor.constraint(equalToConstant: 320),
+            buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsView.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 20),
+            buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
         
+        // testing
         cluesLabel.backgroundColor = .red
         answersLabel.backgroundColor = .blue
         currentAnswer.backgroundColor = .green
+        buttonsView.backgroundColor = .yellow
     }
 
     override func viewDidLoad() {
