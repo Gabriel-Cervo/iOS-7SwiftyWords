@@ -13,6 +13,7 @@
 		845F9CCE25CB1C9E00B6683C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845F9CCC25CB1C9E00B6683C /* Main.storyboard */; };
 		845F9CD025CB1CA100B6683C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845F9CCF25CB1CA100B6683C /* Assets.xcassets */; };
 		845F9CD325CB1CA100B6683C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845F9CD125CB1CA100B6683C /* LaunchScreen.storyboard */; };
+		846C9EB125CE9E4E00821581 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 846C9EB025CE9E4E00821581 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		845F9CCF25CB1CA100B6683C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		845F9CD225CB1CA100B6683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		845F9CD425CB1CA100B6683C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		846C9EB025CE9E4E00821581 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		845F9CBA25CB1C9E00B6683C = {
 			isa = PBXGroup;
 			children = (
+				846C9EB025CE9E4E00821581 /* level1.txt */,
 				845F9CC525CB1C9E00B6683C /* 100DaysOfSwift-Project8 */,
 				845F9CC425CB1C9E00B6683C /* Products */,
 			);
@@ -125,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845F9CD325CB1CA100B6683C /* LaunchScreen.storyboard in Resources */,
+				846C9EB125CE9E4E00821581 /* level1.txt in Resources */,
 				845F9CD025CB1CA100B6683C /* Assets.xcassets in Resources */,
 				845F9CCE25CB1C9E00B6683C /* Main.storyboard in Resources */,
 			);

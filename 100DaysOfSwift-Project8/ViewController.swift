@@ -14,6 +14,12 @@ class ViewController: UIViewController {
     var scoreLabel: UILabel!
     var letterButtons = [UIButton]()
     
+    var activatedButtons = [UIButton]()
+    var solutions = [String]()
+    
+    var score = 0
+    var level = 1
+    
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -132,6 +138,7 @@ class ViewController: UIViewController {
                 
                 // add to the array so we can modify later on
                 letterButtons.append(letterButton)
+                letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
             }
         }
         
@@ -140,12 +147,22 @@ class ViewController: UIViewController {
         answersLabel.backgroundColor = .blue
         currentAnswer.backgroundColor = .green
         buttonsView.backgroundColor = .yellow
+        
+        submitButton.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
+        clearButton.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @objc func letterTapped(_ sender: UIButton) {
+    }
 
+    @objc func submitTapped(_ sender: UIButton) {
+    }
 
+    @objc func clearTapped(_ sender: UIButton) {
+    }
 }
 
