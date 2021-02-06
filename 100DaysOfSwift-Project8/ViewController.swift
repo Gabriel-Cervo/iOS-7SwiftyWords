@@ -207,12 +207,62 @@ class ViewController: UIViewController {
     }
     
     @objc func letterTapped(_ sender: UIButton) {
+        guard let buttonTitle = sender.titleLabel?.text else {
+            print("No title in the button")
+            return
+        }
+        
+        currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
     }
 
     @objc func submitTapped(_ sender: UIButton) {
+        guard let answerText = currentAnswer.text else {
+            print("No answer found")
+            return
+        }
+        
+        guard let solutionPosition = solutions.firstIndex(of: answerText) else {
+            print("No solution found")
+            return
+        }
+        
+        var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+        splitAnswers?[solutionPosition] = answerText
+        answersLabel.text = splitAnswers?.joined(separator: "\n")
+        
+        currentAnswer.text = ""
+        score += 1
+        
+        if score % 7 == 0 {
+            let alertController = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Lets go!", style: .default, handler: levelUp))
+            present(alertController, animated: true)
+        }
     }
 
     @objc func clearTapped(_ sender: UIButton) {
+        currentAnswer.text = ""
+        
+        for btn in activatedButtons {
+            btn.isHidden = false
+        }
+        
+        activatedButtons.removeAll()
+    }
+    
+    func levelUp(action: UIAlertAction) {
+        level += 1
+        
+        solutions.removeAll(keepingCapacity: true)
+        
+        loadLevel()
+        
+        for btn in letterButtons {
+            btn.isHidden = false
+        }
+        
     }
 }
 
