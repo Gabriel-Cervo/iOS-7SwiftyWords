@@ -154,6 +154,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadLevel()
     }
     
     func loadLevel() {
@@ -189,6 +191,18 @@ class ViewController: UIViewController {
             
             let bits = answer.components(separatedBy: "|")
             letterBits += bits
+            
+            // Tira espaco em branco no comeco e fim, tal como \n
+            cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+            answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            letterBits.shuffle()
+            
+            if letterBits.count == letterButtons.count {
+                for i in 0..<letterButtons.count {
+                    letterButtons[i].setTitle(letterBits[i], for: .normal)
+                }
+            }
         }
     }
     
