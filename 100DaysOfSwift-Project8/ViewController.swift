@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     var activatedButtons = [UIButton]()
     var solutions = [String]()
+    var correctAnswers = [String]()
     
     var score = 0 {
         // Property Observer
@@ -189,7 +190,6 @@ class ViewController: UIViewController {
             solutionString += "\(solutionWord.count) letters \n"
             solutions.append(solutionWord)
             
-            
             let bits = answer.components(separatedBy: "|")
             letterBits += bits
             
@@ -225,7 +225,13 @@ class ViewController: UIViewController {
         }
         
         guard let solutionPosition = solutions.firstIndex(of: answerText) else {
-            print("No solution found")
+            let wrongGuessAlert = UIAlertController(title: "Wrong guess!", message: "Looks like you confused something :(", preferredStyle: .alert)
+            wrongGuessAlert.addAction(UIAlertAction(title: "Continue", style: .default))
+            
+            present(wrongGuessAlert, animated: true)
+            
+            score = score > 0 ? score - 1 : 0
+            
             return
         }
         
@@ -234,9 +240,10 @@ class ViewController: UIViewController {
         answersLabel.text = splitAnswers?.joined(separator: "\n")
         
         currentAnswer.text = ""
+        correctAnswers.append(answerText)
         score += 1
         
-        if score % 7 == 0 {
+        if correctAnswers.count == 7 {
             let alertController = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Lets go!", style: .default, handler: levelUp))
             present(alertController, animated: true)
