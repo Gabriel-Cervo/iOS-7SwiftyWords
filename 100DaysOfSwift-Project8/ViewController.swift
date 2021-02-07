@@ -138,6 +138,8 @@ class ViewController: UIViewController {
                 // CGRect -> Core Graphics, draw things on screen
                 let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
                 letterButton.frame = frame
+                letterButton.layer.borderWidth = 2
+                letterButton.layer.borderColor = UIColor.gray.cgColor
                 
                 buttonsView.addSubview(letterButton)
                 
@@ -146,12 +148,6 @@ class ViewController: UIViewController {
                 letterButton.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
             }
         }
-        
-        // testing
-        cluesLabel.backgroundColor = .red
-        answersLabel.backgroundColor = .blue
-        currentAnswer.backgroundColor = .green
-        buttonsView.backgroundColor = .yellow
         
         submitButton.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         clearButton.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
